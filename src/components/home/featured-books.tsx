@@ -17,7 +17,7 @@ const tempBookData = [
     price: '19.95',
   },
   {
-    author: 'Daniel J. Siegel & Tina Payne Bryson',
+    author: 'Daniel J. Siegel',
     title: 'The Whole-Brain Child',
     price: '29.95',
   },
@@ -47,14 +47,15 @@ function FeaturedBooks() {
   return (
     <Flex
       py={24}
-      bgGradient="linear(blue.800 0%,  blue.700 100%)"
+      // bgGradient="linear(blue.800 0%,  blue.700 100%)"
+      bgColor="gray.100"
       w="100vw"
       justifyContent="center"
       alignItems="center"
     >
       <Flex flexDir="column" maxW="1280px" w="100%" alignItems="center">
-        <Heading color="white">Featured resources</Heading>
-        <Text color="white" mt={5} fontSize="1.2rem">
+        <Heading color="gray.900">Featured resources</Heading>
+        <Text color="gray.900" mt={5} fontSize="1.2rem">
           Hand-picked resources packed with practical advice, carefully curated
           by the Parentshop team.
         </Text>

@@ -4,7 +4,13 @@ import Img from 'gatsby-image';
 import { useStaticQuery, graphql } from 'gatsby';
 import { IoArrowForward } from '@react-icons/all-files/io5/IoArrowForward';
 
-function CoursePreviewCard({ image }) {
+function CoursePreviewCard({
+  image,
+  category,
+  location = 'online',
+  title,
+  body,
+}) {
   return (
     <Flex
       flexDir="column"
@@ -21,14 +27,21 @@ function CoursePreviewCard({ image }) {
       transition="all .1s ease-out"
       _hover={{ boxShadow: 'lg', transform: 'translateY(-5px)' }}
     >
-      <Flex flexDir="column" p={6} h="100%" w="100%" alignItems="flex-start">
+      <Flex
+        flexDir="column"
+        p={6}
+        h="100%"
+        w="100%"
+        alignItems="flex-start"
+        height="20rem"
+      >
         <Text
           fontSize="xs"
           color="secondary.500"
           textTransform="uppercase"
           letterSpacing=".1rem"
         >
-          early years educators
+          {category}
         </Text>
         <Heading
           size="md"
@@ -36,8 +49,9 @@ function CoursePreviewCard({ image }) {
           lineHeight="1.4"
           color="gray.800"
           py={2}
+          textTransform="capitalize"
         >
-          Tough Conversations For Early Years Centre Directors
+          {title}
         </Heading>
         <Text
           py=".2rem"
@@ -47,13 +61,12 @@ function CoursePreviewCard({ image }) {
           fontWeight="600"
           fontSize="sm"
           borderRadius="xl"
+          textTransform="capitalize"
         >
-          Online
+          {location}
         </Text>
         <Text color="gray.600" my={2}>
-          Encounters with parents or staff need to be handled with care and
-          consideration. This short course will equip you with strategies you
-          can employ to resolve difficult situations.
+          {body}
         </Text>
         {/* <Button
           rightIcon={<IoArrowForward />}

@@ -17,10 +17,12 @@ const ContactPage = () => {
     }
   `);
   return (
-    <Flex flexDir="row" w="100%" mt={12}>
+    <Flex flexDir="row" w="100%" mt={8} mb={8}>
       <Flex flexDir="column" w="100%" pr={16}>
-        <Heading fontWeight="semibold">Get in touch</Heading>
-        <Text mt={8} color="gray.500" fontSize="1.2rem">
+        <Heading fontWeight="semibold" as="h1">
+          Get in touch
+        </Heading>
+        <Text mt={4} color="gray.500" fontSize="1.2rem">
           We’d love to hear from you! Call us on{' '}
           <chakra.span color="primary.500" fontWeight="semibold">
             (02) 66 808 910

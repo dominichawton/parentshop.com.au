@@ -8,17 +8,17 @@ import {
   useDisclosure,
   Fade,
   Button,
-} from "@chakra-ui/react";
-import Img from "gatsby-image";
-import { graphql, Link, useStaticQuery } from "gatsby";
-import React, { useState } from "react";
-import MobileNavItem from "./mobileNavItem";
+} from '@chakra-ui/react';
+import Img from 'gatsby-image';
+import { graphql, Link, useStaticQuery } from 'gatsby';
+import React, { useState } from 'react';
+import MobileNavItem from './mobileNavItem';
 
-import NavItem from "./desktopNavItem";
+import NavItem from './desktopNavItem';
 // @ts-ignore
-import CloseIcon from "./../../assets/close-outline.svg";
+import CloseIcon from './../../assets/close-outline.svg';
 // @ts-ignore
-import MenuIcon from "./../../assets/menu-outline.svg";
+import MenuIcon from './../../assets/menu-outline.svg';
 
 function Header() {
   const { isOpen, onToggle } = useDisclosure();
@@ -46,59 +46,81 @@ function Header() {
         flexDir="column"
         alignItems="center"
         justifyContent="start"
-        boxShadow={{ base: "lg", lg: "none" }}
-        position={{ base: "fixed", lg: "relative" }}
-        zIndex="0"
+        boxShadow={{ base: 'lg', lg: 'none' }}
+        position={{ base: 'fixed', lg: 'relative' }}
+        zIndex="999"
         w="100%"
         bg="white"
       >
         <Flex
-          w={{ base: "95%", lg: "100%" }}
-          mx={{ base: "auto", lg: "0" }}
-          alignItems="center"
-          justifyContent="space-between"
-          py={3}
-          display={{ base: "none", lg: "flex" }}
+          display={{ base: 'none', lg: 'flex' }}
           borderBottom="1px solid"
           borderColor="gray.200"
+          w="100vw"
         >
-          <Box>
-            <Text color="primary.500" fontWeight="600" fontSize="md">
-              Just released: No Scaredy Cats for the Classroom. Click here to
-              enroll.
-            </Text>
-          </Box>
-
-          <UnorderedList
-            styleType="none"
-            display="flex"
+          <Flex
+            w={{ base: '95%', lg: '100vw' }}
+            mx="auto"
             alignItems="center"
-            justifyContent="center"
-            fontSize="md"
+            justifyContent="space-between"
+            py={3}
+            maxW="1280px"
           >
-            <Button
-              colorScheme="gray"
-              variant="link"
-              size="md"
-              mr={8}
-              _hover={{ textDecoration: "none", color: "primary.500" }}
+            <Box>
+              <Link to="/courses">
+                <Text
+                  color="primary.500"
+                  fontWeight="600"
+                  fontSize="md"
+                  _hover={{ textDecoration: 'underline' }}
+                >
+                  Just released: No Scaredy Cats for the Classroom. Click here
+                  to enroll.
+                </Text>
+              </Link>
+            </Box>
+
+            <UnorderedList
+              styleType="none"
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+              fontSize="md"
             >
-              <Link to="#">Sign in</Link>
-            </Button>
-            <Button colorScheme="secondary" size="md" mb={0}>
-              <Link to="#">Sign up</Link>
-            </Button>
-          </UnorderedList>
+              <Button
+                colorScheme="gray"
+                variant="link"
+                size="md"
+                mr={8}
+                _hover={{ textDecoration: 'none', color: 'primary.500' }}
+              >
+                <Link to="#">Sign in</Link>
+              </Button>
+              <Button colorScheme="secondary" size="md" mb={0}>
+                <Link to="#">Sign up</Link>
+              </Button>
+            </UnorderedList>
+          </Flex>
         </Flex>
         <Flex
           flexDir="row"
           alignItems="center"
           justifyContent="space-between"
-          w={{ base: "90%", lg: "100%" }}
-          mx={{ base: "auto", lg: "0" }}
+          w="100vw"
+          mx={{ base: 'auto', lg: '0' }}
           py={{ base: 1, md: 4, lg: 8 }}
+          borderBottom="1px solid"
+          borderColor="gray.200"
         >
-          <Flex my={{ base: 4, md: 0 }} cursor="pointer">
+          <Flex
+            w={{ base: '95%', lg: '100%' }}
+            my={{ base: 4, md: 0 }}
+            cursor="pointer"
+            maxW="1280px"
+            mx="auto"
+            justifyContent="space-between"
+            alignItems="center"
+          >
             <Link to="/">
               <Box w="130px">
                 <Img
@@ -107,23 +129,48 @@ function Header() {
                 />
               </Box>
             </Link>
+            <UnorderedList
+              display={{ base: 'none', lg: 'flex' }}
+              alignItems="center"
+              justifyContent="space-between"
+              styleType="none"
+            >
+              <NavItem name="courses" />
+              <NavItem name="professionals" />
+              <NavItem name="parents" />
+              <NavItem name="shop" />
+              <NavItem
+                name="about"
+                dropdown={true}
+                dropdownItems={[
+                  {
+                    name: 'Parentshop',
+                    description: 'Learn more about Parentshop.',
+                    path: 'parentshop',
+                  },
+                  {
+                    name: 'Michael Hawton',
+                    description: 'Find out more about our founder.',
+                    path: 'michael-hawton',
+                  },
+                  {
+                    name: 'Meet the team',
+                    description: 'Get to know us.',
+                    path: 'meet-the-team',
+                  },
+                  {
+                    name: 'Media',
+                    description: 'Parentshop in the media.',
+                    path: 'media',
+                  },
+                ]}
+              />
+              <NavItem name="contact" />
+            </UnorderedList>
           </Flex>
-          <UnorderedList
-            display={{ base: "none", lg: "flex" }}
-            alignItems="center"
-            justifyContent="space-between"
-            styleType="none"
-          >
-            <NavItem name="courses" />
-            <NavItem name="professionals" />
-            <NavItem name="parents" />
-            <NavItem name="shop" />
-            <NavItem name="about" />
-            <NavItem name="contact" />
-          </UnorderedList>
 
           <chakra.button
-            display={{ base: "flex", lg: "none" }}
+            display={{ base: 'flex', lg: 'none' }}
             flexDir="column"
             justifyContent="center"
             alignItems="center"
@@ -147,10 +194,10 @@ function Header() {
           right="0"
           bottom="0"
           zIndex="99"
-          display={{ base: "block", lg: "none" }}
+          display={{ base: 'block', lg: 'none' }}
         >
           <Flex
-            display={{ base: "flex", lg: "none" }}
+            display={{ base: 'flex', lg: 'none' }}
             alignItems="center"
             justifyContent="space-between"
             styleType="none"
@@ -216,7 +263,7 @@ function Header() {
               />
             </UnorderedList>
             <chakra.button
-              display={{ base: "flex", lg: "none" }}
+              display={{ base: 'flex', lg: 'none' }}
               flexDir="column"
               justifyContent="center"
               alignItems="center"

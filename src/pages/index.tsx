@@ -25,10 +25,8 @@ const BackgroundColour = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* background-color: #31b3ab; */
-  /* background-color: #edf2f7; */
-  /* background-color: #fff; */
-  background: linear-gradient(#2a4365, #2c5282);
+  background-color: #fff;
+  border-bottom: 1px solid #e2e8f0;
 `;
 
 const IndexPage = ({ data }) => {
@@ -52,12 +50,12 @@ const IndexPage = ({ data }) => {
               justifyContent="center"
               maxW="500px"
             >
-              <Heading as="h1" color="white" fontSize={36}>
+              <Heading as="h1" color="gray.900" fontSize={36}>
                 Australia's leading behaviour-change specialist
               </Heading>
               <Heading
                 as="h2"
-                color="white"
+                color="gray.600"
                 fontSize={18}
                 fontWeight="400"
                 mt={4}

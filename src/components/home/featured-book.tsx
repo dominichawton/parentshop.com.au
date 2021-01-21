@@ -16,7 +16,7 @@ function FeaturedBook({
         flexDir="column"
         justifyContent="center"
         alignItems="start"
-        color="white"
+        color="gray.800"
         transition=".1s ease-out all"
         // _hover={{ transform: 'translateY(-5px)' }}
       >
@@ -47,6 +47,7 @@ function FeaturedBook({
             color="gray.800"
             fontWeight="semibold"
             fontSize="sm"
+            boxShadow="md"
           >{`$${price}`}</Text>
         </Flex>
       </Flex>
