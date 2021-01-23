@@ -16,36 +16,7 @@ import React from 'react';
 import CoursePreviewCard from '../courses/course-preview-card';
 import { IoArrowForward } from '@react-icons/all-files/io5/IoArrowForward';
 
-const data = [
-  {
-    title: 'No Scaredy Cats',
-    body:
-      'No Scaredy Cats is a one-day professional learning course for teachers and teacher aides to learn classroom strategies for managing anxiety and building resilience in the classroom.',
-    category: 'school leaders & teachers',
-    location: 'online',
-  },
-  {
-    title: 'tough conversations for early years directors',
-    body:
-      'Encounters with parents or staff need to be handled with care and consideration. This short course will equip you with strategies you can employ to resolve difficult situations.',
-    category: 'early years educators',
-    location: 'online',
-  },
-  {
-    title: 'Talk Less Listen More for Early Years Educators',
-    body:
-      'Help children develop more self-control and to respond with more flexibility to frustration and upsetting events.',
-    category: 'early years educators',
-    location: 'tamworth, QLD',
-  },
-  {
-    title: '123 Magic & Emotion Coaching Practitioner Training',
-    body:
-      '1-2-3 Magic® & Emotion Coaching is a one-day professional learning course to equips you with the skills to manage children’s difficult behaviour.',
-    category: 'child & family specialists',
-    location: 'sydney, NSW',
-  },
-];
+import { courseData } from '../courses/course-data';
 
 function UpcomingCourses({ images }) {
   return (
@@ -70,7 +41,7 @@ function UpcomingCourses({ images }) {
           View all upcoming courses
         </Button>
       </Flex>
-      <Tabs variant="soft-rounded" colorScheme="gray" w="100%">
+      <Tabs variant="soft-rounded" colorScheme="secondary" w="100%">
         <Flex w="100%" justifyContent="space-between" alignItems="center">
           <TabList my={10} display="flex">
             <Tab mr={4}>All courses</Tab>
@@ -82,6 +53,7 @@ function UpcomingCourses({ images }) {
           <Flex>
             <IconButton
               colorScheme="gray"
+              boxShadow="md"
               aria-label="Previous courses"
               fontSize="28px"
               icon={<ChevronLeftIcon />}
@@ -90,6 +62,7 @@ function UpcomingCourses({ images }) {
             />
             <IconButton
               colorScheme="gray"
+              boxShadow="md"
               aria-label="Next courses"
               fontSize="28px"
               icon={<ChevronRightIcon />}
@@ -108,16 +81,12 @@ function UpcomingCourses({ images }) {
             {images.map((image, index) => (
               <CoursePreviewCard
                 image={image.node.childImageSharp.fluid}
-                title={data[index].title}
-                body={data[index].body}
-                category={data[index].category}
-                location={data[index].location}
+                title={courseData[index].title}
+                body={courseData[index].body}
+                category={courseData[index].category}
+                location={courseData[index].location}
               />
             ))}
-            {/* <CoursePreviewCard />
-            <CoursePreviewCard />
-            <CoursePreviewCard />
-            <CoursePreviewCard /> */}
           </TabPanel>
           <TabPanel
             display="flex"
@@ -129,16 +98,12 @@ function UpcomingCourses({ images }) {
             {images.map((image, index) => (
               <CoursePreviewCard
                 image={image.node.childImageSharp.fluid}
-                title={data[index].title}
-                body={data[index].body}
-                category={data[index].category}
-                location={data[index].location}
+                title={courseData[index].title}
+                body={courseData[index].body}
+                category={courseData[index].category}
+                location={courseData[index].location}
               />
             ))}
-            {/* <CoursePreviewCard />
-            <CoursePreviewCard />
-            <CoursePreviewCard />
-            <CoursePreviewCard /> */}
           </TabPanel>
           <TabPanel
             display="flex"
@@ -150,16 +115,12 @@ function UpcomingCourses({ images }) {
             {images.map((image, index) => (
               <CoursePreviewCard
                 image={image.node.childImageSharp.fluid}
-                title={data[index].title}
-                body={data[index].body}
-                category={data[index].category}
-                location={data[index].location}
+                title={courseData[index].title}
+                body={courseData[index].body}
+                category={courseData[index].category}
+                location={courseData[index].location}
               />
             ))}
-            {/* <CoursePreviewCard />
-            <CoursePreviewCard />
-            <CoursePreviewCard />
-            <CoursePreviewCard /> */}
           </TabPanel>
           <TabPanel
             display="flex"
@@ -171,16 +132,12 @@ function UpcomingCourses({ images }) {
             {images.map((image, index) => (
               <CoursePreviewCard
                 image={image.node.childImageSharp.fluid}
-                title={data[index].title}
-                body={data[index].body}
-                category={data[index].category}
-                location={data[index].location}
+                title={courseData[index].title}
+                body={courseData[index].body}
+                category={courseData[index].category}
+                location={courseData[index].location}
               />
             ))}
-            {/* <CoursePreviewCard />
-            <CoursePreviewCard />
-            <CoursePreviewCard />
-            <CoursePreviewCard /> */}
           </TabPanel>
           <TabPanel
             display="flex"
@@ -192,16 +149,12 @@ function UpcomingCourses({ images }) {
             {images.map((image, index) => (
               <CoursePreviewCard
                 image={image.node.childImageSharp.fluid}
-                title={data[index].title}
-                body={data[index].body}
-                category={data[index].category}
-                location={data[index].location}
+                title={courseData[index].title}
+                body={courseData[index].body}
+                category={courseData[index].category}
+                location={courseData[index].location}
               />
             ))}
-            {/* <CoursePreviewCard />
-            <CoursePreviewCard />
-            <CoursePreviewCard />
-            <CoursePreviewCard /> */}
           </TabPanel>
         </TabPanels>
       </Tabs>

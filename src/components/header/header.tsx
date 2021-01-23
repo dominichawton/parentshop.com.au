@@ -13,6 +13,7 @@ import Img from 'gatsby-image';
 import { graphql, Link, useStaticQuery } from 'gatsby';
 import React, { useState } from 'react';
 import MobileNavItem from './mobileNavItem';
+import { FiArrowRight } from 'react-icons/fi';
 
 import NavItem from './desktopNavItem';
 // @ts-ignore
@@ -50,7 +51,7 @@ function Header() {
         position={{ base: 'fixed', lg: 'relative' }}
         zIndex="999"
         w="100%"
-        bg="white"
+        bg="gray.50"
       >
         <Flex
           display={{ base: 'none', lg: 'flex' }}
@@ -63,20 +64,23 @@ function Header() {
             mx="auto"
             alignItems="center"
             justifyContent="space-between"
-            py={3}
+            py={2}
             maxW="1280px"
           >
-            <Box>
+            <Box
+              color="primary.500"
+              fontWeight="500"
+              fontSize="md"
+              _hover={{ textDecoration: 'underline' }}
+            >
               <Link to="/courses">
-                <Text
-                  color="primary.500"
-                  fontWeight="600"
-                  fontSize="md"
-                  _hover={{ textDecoration: 'underline' }}
-                >
-                  Just released: No Scaredy Cats for the Classroom. Click here
-                  to enroll.
-                </Text>
+                <Flex justifyContent="center" alignItems="center">
+                  <Text mr={1}>
+                    We partner with organizations looking to train large groups.
+                    Learn more
+                  </Text>
+                  <FiArrowRight />
+                </Flex>
               </Link>
             </Box>
 
@@ -96,7 +100,13 @@ function Header() {
               >
                 <Link to="#">Sign in</Link>
               </Button>
-              <Button colorScheme="secondary" size="md" mb={0}>
+              <Button
+                colorScheme="secondary"
+                size="md"
+                mb={0}
+                variant="link"
+                _hover={{ textDecoration: 'none', color: 'secondary.600' }}
+              >
                 <Link to="#">Sign up</Link>
               </Button>
             </UnorderedList>
@@ -108,8 +118,8 @@ function Header() {
           justifyContent="space-between"
           w="100vw"
           mx={{ base: 'auto', lg: '0' }}
-          py={{ base: 1, md: 4, lg: 8 }}
-          borderBottom="1px solid"
+          py={{ base: 1, md: 4, lg: 4 }}
+          // borderBottom="1px solid"
           borderColor="gray.200"
         >
           <Flex

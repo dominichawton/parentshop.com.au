@@ -6,7 +6,7 @@ import Header from '../header/header';
 
 function Layout({ children }) {
   return (
-    <Flex minH="100vh" flexDir="column">
+    <Flex minH="100vh" flexDir="column" bgColor="gray.50">
       <Flex
         flexDir="column"
         maxW="1280px"

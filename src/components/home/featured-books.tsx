@@ -55,13 +55,15 @@ function FeaturedBooks() {
     >
       <Flex flexDir="column" maxW="1280px" w="100%" alignItems="center">
         <Heading color="gray.900">Featured resources</Heading>
-        <Text color="gray.900" mt={5} fontSize="1.2rem">
+        <Text color="gray.600" mt={5} fontSize="1.2rem">
           Hand-picked resources packed with practical advice, carefully curated
           by the Parentshop team.
         </Text>
-        <Button colorScheme="secondary" mt={6}>
-          Go to shop
-        </Button>
+        <Link to="/shop">
+          <Button colorScheme="secondary" mt={6}>
+            Go to shop
+          </Button>
+        </Link>
         <Flex justify="space-between" w="100%" my={20}>
           {data.bookCovers.edges.map((edge, index) => (
             <FeaturedBook

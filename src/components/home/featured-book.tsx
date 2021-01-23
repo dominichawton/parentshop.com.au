@@ -36,6 +36,7 @@ function FeaturedBook({
           <Text
             fontSize=".9rem"
             maxW="150px"
+            color="gray.600"
             mt={2}
             mb={3}
           >{`By ${author}`}</Text>

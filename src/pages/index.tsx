@@ -25,7 +25,8 @@ const BackgroundColour = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #fff;
+  /* background-color: #fff; */
+  background-color: #f7fafc;
   border-bottom: 1px solid #e2e8f0;
 `;
 

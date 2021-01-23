@@ -42,7 +42,7 @@ function MichaelHawton() {
         <Heading as="h1" fontWeight="semibold" mt={3}>
           Michael Hawton
         </Heading>
-        <Text fontSize="1.3rem" fontWeight="400" color="gray.500" mt={3}>
+        <Text fontSize="1.3rem" fontWeight="400" color="gray.600" mt={3}>
           MAPS, B.A., Grad. Dip. (App. Psych.), Dip. (Teaching), Grad. Cert.
           (Bus. Admin.)
         </Text>
@@ -100,7 +100,7 @@ function MichaelHawton() {
           justify="center"
           align="center"
         >
-          <Text color="secondary.500" fontWeight="semibold" textAlign="center">
+          <Text color="secondary.500" fontWeight="semibold" textAlign="left">
             For interviews and media requests call 1300 738 278 or contact us.
             See recent media here.
           </Text>

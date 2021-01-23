@@ -10,6 +10,7 @@ import {
   Text,
   Textarea,
   Select,
+  Divider,
 } from '@chakra-ui/react';
 import { Formik, Form, Field } from 'formik';
 
@@ -34,7 +35,12 @@ function ContactForm() {
                   mr={5}
                 >
                   <FormLabel htmlFor="firstName">First name</FormLabel>
-                  <Input {...field} id="firstName" placeholder="First name" />
+                  <Input
+                    {...field}
+                    id="firstName"
+                    placeholder="First name"
+                    bgColor="white"
+                  />
                   <FormErrorMessage>{form.errors.firstName}</FormErrorMessage>
                 </FormControl>
               )}
@@ -45,7 +51,12 @@ function ContactForm() {
                   isInvalid={form.errors.lastName && form.touched.lastName}
                 >
                   <FormLabel htmlFor="lastName">Last name</FormLabel>
-                  <Input {...field} id="lastName" placeholder="Last name" />
+                  <Input
+                    {...field}
+                    id="lastName"
+                    placeholder="Last name"
+                    bgColor="white"
+                  />
                   <FormErrorMessage>{form.errors.lastName}</FormErrorMessage>
                 </FormControl>
               )}
@@ -55,10 +66,15 @@ function ContactForm() {
             {({ field, form }) => (
               <FormControl
                 isInvalid={form.errors.email && form.touched.email}
-                mt={4}
+                mt={5}
               >
                 <FormLabel htmlFor="email">Email</FormLabel>
-                <Input {...field} id="email" placeholder="Email" />
+                <Input
+                  {...field}
+                  id="email"
+                  placeholder="Email"
+                  bgColor="white"
+                />
                 <FormErrorMessage>{form.errors.email}</FormErrorMessage>
               </FormControl>
             )}
@@ -67,7 +83,7 @@ function ContactForm() {
             {({ field, form }) => (
               <FormControl
                 isInvalid={form.errors.phone && form.touched.phone}
-                mt={4}
+                mt={5}
               >
                 <Flex justifyContent="space-between" alignItems="center">
                   <FormLabel htmlFor="phone">Phone</FormLabel>
@@ -75,7 +91,12 @@ function ContactForm() {
                     Optional
                   </Text>
                 </Flex>
-                <Input {...field} id="phone" placeholder="Phone" />
+                <Input
+                  {...field}
+                  id="phone"
+                  placeholder="Phone"
+                  bgColor="white"
+                />
                 <FormErrorMessage>{form.errors.phone}</FormErrorMessage>
               </FormControl>
             )}
@@ -84,7 +105,7 @@ function ContactForm() {
             {({ field, form }) => (
               <FormControl
                 isInvalid={form.errors.company && form.touched.company}
-                mt={4}
+                mt={5}
               >
                 <Flex justifyContent="space-between" alignItems="center">
                   <FormLabel htmlFor="company">Company</FormLabel>
@@ -92,7 +113,12 @@ function ContactForm() {
                     Optional
                   </Text>
                 </Flex>
-                <Input {...field} id="company" placeholder="Company" />
+                <Input
+                  {...field}
+                  id="company"
+                  placeholder="Company"
+                  bgColor="white"
+                />
                 <FormErrorMessage>{form.errors.company}</FormErrorMessage>
               </FormControl>
             )}
@@ -101,7 +127,7 @@ function ContactForm() {
             {({ field, form }) => (
               <FormControl
                 isInvalid={form.errors.message && form.touched.message}
-                mt={4}
+                mt={5}
               >
                 <Flex justifyContent="space-between" alignItems="center">
                   <FormLabel htmlFor="message">How can we help you?</FormLabel>
@@ -113,6 +139,7 @@ function ContactForm() {
                   {...field}
                   id="message"
                   placeholder="Write your message here"
+                  bgColor="white"
                 />
                 <FormErrorMessage>{form.errors.message}</FormErrorMessage>
               </FormControl>
@@ -122,14 +149,19 @@ function ContactForm() {
             {({ field, form }) => (
               <FormControl
                 isInvalid={form.errors.discover && form.touched.discover}
-                mt={4}
+                mt={5}
               >
                 <Flex justifyContent="space-between" alignItems="center">
                   <FormLabel htmlFor="discover">
                     How did you hear about us?
                   </FormLabel>
                 </Flex>
-                <Select {...field} id="discover" placeholder="Select">
+                <Select
+                  {...field}
+                  id="discover"
+                  placeholder="Select"
+                  bgColor="white"
+                >
                   <option>Word of mouth</option>
                   <option>Google</option>
                   <option>Ad</option>
@@ -140,9 +172,9 @@ function ContactForm() {
               </FormControl>
             )}
           </Field>
-          <Flex justifyContent="flex-start" alignItems="center" mt={3}>
+          <Divider mt={6} />
+          <Flex justifyContent="flex-end" alignItems="center" mt={4}>
             <Button
-              mt={4}
               colorScheme="secondary"
               isLoading={props.isSubmitting}
               type="submit"

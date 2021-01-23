@@ -87,8 +87,9 @@ function DesktopNavItem({
             borderRadius="md"
             className="dropdown-container"
           >
-            {dropdownItems.map((item) => (
+            {dropdownItems.map((item, index) => (
               <Flex
+                key={index}
                 flexDir="column"
                 justifyContent="flex-start"
                 alignItems="flex-start"

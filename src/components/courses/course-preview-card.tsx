@@ -19,13 +19,15 @@ function CoursePreviewCard({
       h="100%"
       w="19rem"
       borderRadius="2xl"
-      border="1px solid"
+      // border="1px solid"
       borderColor="gray.200"
+      boxShadow="md"
       bgColor="white"
       overflow="hidden"
       cursor="pointer"
       transition="all .1s ease-out"
-      _hover={{ boxShadow: 'lg', transform: 'translateY(-5px)' }}
+      _hover={{ boxShadow: 'xl', transform: 'translateY(-5px)' }}
+      mb={12}
     >
       <Flex
         flexDir="column"
@@ -48,7 +50,8 @@ function CoursePreviewCard({
           fontWeight="600"
           lineHeight="1.4"
           color="gray.800"
-          py={2}
+          pt={1}
+          pb={2}
           textTransform="capitalize"
         >
           {title}
