@@ -52,7 +52,7 @@ const IndexPage = ({ data }) => {
               maxW="500px"
             >
               <Heading as="h1" color="gray.900" fontSize={36}>
-                Australia's leading behaviour-change specialist
+                {data.header.edges[0].node.heading}
               </Heading>
               <Heading
                 as="h2"
@@ -109,6 +109,20 @@ export const query = graphql`
             fluid {
               ...GatsbyImageSharpFluid_withWebp
             }
+          }
+        }
+      }
+    }
+    header: allContentfulEntry {
+      edges {
+        node {
+          ... on ContentfulPageHeader {
+            introParagraph {
+              internal {
+                content
+              }
+            }
+            heading
           }
         }
       }

@@ -4,35 +4,7 @@ import Img from 'gatsby-image';
 import { graphql, useStaticQuery } from 'gatsby';
 import { IoArrowForward } from '@react-icons/all-files/io5/IoArrowForward';
 
-const AboutPage = () => {
-  const data = useStaticQuery(graphql`
-    query {
-      heroImage: file(relativePath: { eq: "about/about-parentshop.jpg" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid_withWebp
-          }
-        }
-      }
-      professionalsImage: file(
-        relativePath: { eq: "about/about-professionals.jpg" }
-      ) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid_withWebp
-          }
-        }
-      }
-      parentsImage: file(relativePath: { eq: "about/about-parents.jpg" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid_withWebp
-          }
-        }
-      }
-    }
-  `);
-
+const AboutPage = ({ data }) => {
   return (
     <Flex
       flexDir="column"
@@ -58,14 +30,10 @@ const AboutPage = () => {
             flexGrow={1}
           >
             <Heading as="h1" fontWeight="semibold" mt={10}>
-              About Parentshop
+              {data.header.heading}
             </Heading>
             <Text color="gray.600" mt={6}>
-              Parentshop was founded in 2003 by Child & Family Psychologist,
-              Michael Hawton, as a resource hub for parents and educators. It
-              has since grown to be one of Australia’s leading professional and
-              parental development training organisations. We’ve trained over
-              20,000 professionals and parents over the last 10 years.{' '}
+              {data.header.introParagraph.internal.content}
             </Text>
           </Flex>
           <Flex justifyContent="space-between" alignItems="center" mt={24}>
@@ -193,3 +161,42 @@ const AboutPage = () => {
 };
 
 export default AboutPage;
+
+export const query = graphql`
+  query {
+    header: contentfulEntry(contentful_id: { eq: "2R6UxDZYHqFaWUj6nvhtFF" }) {
+      ... on ContentfulPageHeader {
+        id
+        heading
+        introParagraph {
+          internal {
+            content
+          }
+        }
+      }
+    }
+    heroImage: file(relativePath: { eq: "about/about-parentshop.jpg" }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+    professionalsImage: file(
+      relativePath: { eq: "about/about-professionals.jpg" }
+    ) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+    parentsImage: file(relativePath: { eq: "about/about-parents.jpg" }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+  }
+`;

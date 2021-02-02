@@ -1,12 +1,33 @@
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Parentshop | Australia's leading behaviour-change specialist`,
+    description: `Engaging, action-based professional development and training events that deliver effective behaviour-change solutions for all ages. World-class training using the latest research in behavioural sciences.`,
+    author: `Dominic Hawton`,
   },
   plugins: [
     `@chakra-ui/gatsby-plugin`,
     `gatsby-plugin-react-helmet`,
+    {
+      resolve: `gatsby-source-shopify`,
+      options: {
+        // The domain name of your Shopify shop.
+        shopName: `ParentshopAustralia`,
+        // The storefront access token
+        accessToken: process.env.SHOPIFY_ACCESS_TOKEN,
+      },
+    },
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: `hx8p84mvb4db`,
+        // Learn about environment variables: https://gatsby.dev/env-vars
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {

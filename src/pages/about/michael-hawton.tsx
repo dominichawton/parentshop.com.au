@@ -5,18 +5,7 @@ import { IconContext } from 'react-icons';
 import Img from 'gatsby-image';
 import { useStaticQuery, graphql } from 'gatsby';
 
-function MichaelHawton() {
-  const data = useStaticQuery(graphql`
-    query {
-      michael: file(relativePath: { eq: "about/michael.jpg" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid_withWebp
-          }
-        }
-      }
-    }
-  `);
+function MichaelHawton({ data }) {
   return (
     <Flex
       justifyContent="space-between"
@@ -40,7 +29,7 @@ function MichaelHawton() {
           Parentshop founder
         </Text>
         <Heading as="h1" fontWeight="semibold" mt={3}>
-          Michael Hawton
+          {data.pageHeader.heading}
         </Heading>
         <Text fontSize="1.3rem" fontWeight="400" color="gray.600" mt={3}>
           MAPS, B.A., Grad. Dip. (App. Psych.), Dip. (Teaching), Grad. Cert.
@@ -63,32 +52,7 @@ function MichaelHawton() {
           </Box>
         </Flex>
         <Text mt={8} color="gray.800">
-          Michael Hawton is a registered Australian psychologist, trained
-          teacher, author of Talk Less Listen More™ and Engaging Adolescents™,
-          international speaker, media commentator, and a father of two.
-          <br />
-          <br />
-          With 30 years’ experience working with children and families including
-          in his private practice, working with the United Nations in
-          Seychelles, and preparing child welfare reports for the Family Court,
-          Michael is one of Australia’s foremost experts in managing difficult
-          behaviours in children, adolescents, and adults.
-          <br />
-          <br />
-          Featuring regularly as a panel guest advisor on shows such as Today,
-          Sunrise and more, Michael teaches teachers, family workers, early
-          years educators, and parents based the latest research in behavioural
-          science, covering a range of topics such as positive cultural change
-          in schools, how to have tough conversations in the workplace,
-          improving self-regulation in children, reducing anxiety in children,
-          managing tricky adolescent behaviours, and tackling family of origin
-          issues in child protection.
-          <br />
-          <br />
-          Michael’s training programs have equiped over +12,500 professionals
-          and teachers and +110,000 parents across Australia, NZ, UK, and the
-          United States since 2006 through 1-2-3 Magic® and Emotion Coaching,
-          Engaging Adolescents™ and Tough Conversations™.
+          {data.pageHeader.introParagraph.internal.content}
         </Text>
         <Flex
           mt={12}
@@ -114,3 +78,28 @@ function MichaelHawton() {
 }
 
 export default MichaelHawton;
+
+export const query = graphql`
+  query {
+    pageHeader: contentfulEntry(
+      contentful_id: { eq: "6Xwfjo00HOScbQK2BU83m9" }
+    ) {
+      ... on ContentfulPageHeader {
+        id
+        heading
+        introParagraph {
+          internal {
+            content
+          }
+        }
+      }
+    }
+    michael: file(relativePath: { eq: "about/michael.jpg" }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+  }
+`;

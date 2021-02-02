@@ -4,18 +4,7 @@ import Img from 'gatsby-image';
 import { useStaticQuery, graphql } from 'gatsby';
 import VideoMediaPreview from '../../components/media/video-media-preview';
 
-function Media() {
-  const data = useStaticQuery(graphql`
-    query {
-      michael: file(relativePath: { eq: "media/michael.jpg" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid_withWebp
-          }
-        }
-      }
-    }
-  `);
+function Media({ data }) {
   return (
     <Flex
       flexDir="column"
@@ -143,3 +132,28 @@ function Media() {
 }
 
 export default Media;
+
+export const query = graphql`
+  query {
+    pageHeader: contentfulEntry(
+      contentful_id: { eq: "io7xBzm11ypqW5q37LXoX" }
+    ) {
+      ... on ContentfulPageHeader {
+        id
+        heading
+        introParagraph {
+          internal {
+            content
+          }
+        }
+      }
+    }
+    michael: file(relativePath: { eq: "media/michael.jpg" }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+  }
+`;
