@@ -16,7 +16,8 @@ import React from 'react';
 import CoursePreviewCard from '../courses/course-preview-card';
 import { IoArrowForward } from '@react-icons/all-files/io5/IoArrowForward';
 
-import { courseData } from '../courses/course-data';
+import { courseData } from '../../data/course-data';
+import LinkButton from '../buttons/link-button';
 
 function UpcomingCourses({ images }) {
   return (
@@ -31,15 +32,7 @@ function UpcomingCourses({ images }) {
     >
       <Flex justifyContent="flex-start" alignItems="flex-end" w="100%">
         <Heading size="lg">Upcoming courses</Heading>
-        <Button
-          rightIcon={<IoArrowForward />}
-          colorScheme="secondary"
-          variant="link"
-          ml={8}
-          pb={1}
-        >
-          View all upcoming courses
-        </Button>
+        <LinkButton text="View all courses" marginLeft={8} link="courses" />
       </Flex>
       <Tabs variant="soft-rounded" colorScheme="secondary" w="100%">
         <Flex w="100%" justifyContent="space-between" alignItems="center">

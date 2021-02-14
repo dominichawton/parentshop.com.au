@@ -16,46 +16,54 @@ function MichaelHawton({ data }) {
     >
       <Flex
         flexDir="column"
-        justifyContent="flex-start"
-        alignItems="flex-start"
+        justify="start"
+        align="start"
         w="100%"
+        flexGrow={1}
       >
-        <Text
-          textTransform="uppercase"
-          letterSpacing=".2rem"
-          color="primary.500"
-          fontSize=".9rem"
-        >
-          Parentshop founder
-        </Text>
-        <Heading as="h1" fontWeight="semibold" mt={3}>
-          {data.pageHeader.heading}
-        </Heading>
-        <Text fontSize="1.3rem" fontWeight="400" color="gray.600" mt={3}>
-          MAPS, B.A., Grad. Dip. (App. Psych.), Dip. (Teaching), Grad. Cert.
-          (Bus. Admin.)
-        </Text>
-        <Flex color="primary.500" mt={4}>
-          <Box mr={4}>
-            <IconContext.Provider value={{ size: '1.2rem' }}>
-              <Box>
-                <FiLinkedin />
-              </Box>
-            </IconContext.Provider>
-          </Box>
-          <Box>
-            <IconContext.Provider value={{ size: '1.2rem' }}>
-              <Box>
-                <FiTwitter />
-              </Box>
-            </IconContext.Provider>
-          </Box>
-        </Flex>
-        <Text mt={8} color="gray.800">
-          {data.pageHeader.introParagraph.internal.content}
-        </Text>
         <Flex
-          mt={12}
+          flexDir="column"
+          justifyContent="flex-start"
+          alignItems="flex-start"
+          w="100%"
+          flexGrow={1}
+        >
+          <Text
+            textTransform="uppercase"
+            letterSpacing=".2rem"
+            color="primary.500"
+            fontSize=".9rem"
+          >
+            Parentshop founder
+          </Text>
+          <Heading as="h1" mt={3}>
+            {data.pageHeader.heading}
+          </Heading>
+          <Text fontSize="1.3rem" fontWeight="400" color="gray.600" mt={3}>
+            MAPS, B.A., Grad. Dip. (App. Psych.), Dip. (Teaching), Grad. Cert.
+            (Bus. Admin.)
+          </Text>
+          <Flex color="primary.500" mt={4}>
+            <Box mr={4}>
+              <IconContext.Provider value={{ size: '1.2rem' }}>
+                <Box>
+                  <FiLinkedin />
+                </Box>
+              </IconContext.Provider>
+            </Box>
+            <Box>
+              <IconContext.Provider value={{ size: '1.2rem' }}>
+                <Box>
+                  <FiTwitter />
+                </Box>
+              </IconContext.Provider>
+            </Box>
+          </Flex>
+          <Text mt={8} color="gray.800">
+            {data.pageHeader.introParagraph.internal.content}
+          </Text>
+        </Flex>
+        <Flex
           py={6}
           px={8}
           borderRadius="lg"

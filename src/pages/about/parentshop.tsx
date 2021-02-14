@@ -29,7 +29,7 @@ const AboutPage = ({ data }) => {
             justifyContent="flex-start"
             flexGrow={1}
           >
-            <Heading as="h1" fontWeight="semibold" mt={10}>
+            <Heading as="h1" mt={10}>
               {data.header.heading}
             </Heading>
             <Text color="gray.600" mt={6}>
@@ -94,7 +94,7 @@ const AboutPage = ({ data }) => {
         alignItems="flex-start"
         justifyContent="center"
       >
-        <Heading fontSize="2rem" fontWeight="semibold" w="100%">
+        <Heading fontSize="2rem" w="100%">
           Courses
         </Heading>
         <Flex mt={8} w="100%">
@@ -108,7 +108,7 @@ const AboutPage = ({ data }) => {
             <Box w="100%" borderRadius="md" overflow="hidden" boxShadow="lg">
               <Img fluid={data.professionalsImage.childImageSharp.fluid} />
             </Box>
-            <Heading fontWeight="semibold" fontSize="1.4rem" mt={10}>
+            <Heading fontSize="1.4rem" mt={10}>
               For Professionals
             </Heading>
             <Text color="gray.600" mt={4}>
@@ -136,7 +136,7 @@ const AboutPage = ({ data }) => {
             <Box w="100%" borderRadius="md" overflow="hidden" boxShadow="lg">
               <Img fluid={data.parentsImage.childImageSharp.fluid} />
             </Box>
-            <Heading fontWeight="semibold" fontSize="1.4rem" mt={10}>
+            <Heading fontSize="1.4rem" mt={10}>
               For Parents
             </Heading>
             <Text color="gray.600" mt={4}>

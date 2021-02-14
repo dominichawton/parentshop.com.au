@@ -5,28 +5,7 @@ import Img from 'gatsby-image';
 import { useStaticQuery } from 'gatsby';
 import FeaturedBook from './featured-book';
 
-const tempBookData = [
-  {
-    author: 'Michael Hawton',
-    title: 'Engaging Adolescents',
-    price: '29.95',
-  },
-  {
-    author: 'Daniel J. Siegel',
-    title: 'Brainstorm',
-    price: '19.95',
-  },
-  {
-    author: 'Daniel J. Siegel',
-    title: 'The Whole-Brain Child',
-    price: '29.95',
-  },
-  {
-    author: 'Daniel J. Siegel',
-    title: 'Mindsight',
-    price: '19.95',
-  },
-];
+import { tempBookData } from '../../data/books';
 
 function FeaturedBooks() {
   const data = useStaticQuery(graphql`

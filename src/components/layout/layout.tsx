@@ -12,7 +12,7 @@ function Layout({ children }) {
         maxW="1280px"
         mx="auto"
         flexGrow={1}
-        w={{ base: '100%', lg: '90%' }}
+        w={{ base: '90%', lg: '100%' }}
         color="gray.800"
       >
         <Flex flexDir="column">

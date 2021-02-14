@@ -73,7 +73,7 @@ function Header() {
               fontSize="md"
               _hover={{ textDecoration: 'underline' }}
             >
-              <Link to="/courses">
+              <Link to="/alliances">
                 <Flex justifyContent="center" alignItems="center">
                   <Text mr={1}>
                     We partner with organizations looking to train large groups.

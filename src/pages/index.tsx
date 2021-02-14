@@ -2,7 +2,7 @@ import { Box, Button, Flex, Heading } from '@chakra-ui/react';
 import React from 'react';
 import styled from '@emotion/styled';
 import Img from 'gatsby-image';
-import { useStaticQuery, graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import UpcomingCourses from '../components/home/upcoming-courses';
 import FeaturedBooks from '../components/home/featured-books';
 import OurPartners from '../components/home/our-partners';
@@ -52,7 +52,7 @@ const IndexPage = ({ data }) => {
               maxW="500px"
             >
               <Heading as="h1" color="gray.900" fontSize={36}>
-                {data.header.edges[0].node.heading}
+                {data.header.heading}
               </Heading>
               <Heading
                 as="h2"
@@ -68,7 +68,9 @@ const IndexPage = ({ data }) => {
                 ages. World-class training using the latest research in
                 behavioural sciences.
               </Heading>
-              <Button colorScheme="secondary">See courses</Button>
+              <Link to="/courses">
+                <Button colorScheme="secondary">See courses</Button>
+              </Link>
             </Flex>
           </Box>
         </Box>
@@ -113,16 +115,13 @@ export const query = graphql`
         }
       }
     }
-    header: allContentfulEntry {
-      edges {
-        node {
-          ... on ContentfulPageHeader {
-            introParagraph {
-              internal {
-                content
-              }
-            }
-            heading
+    header: contentfulEntry(contentful_id: { eq: "WDdiVIy0h3wvQahcysvOA" }) {
+      ... on ContentfulPageHeader {
+        id
+        heading
+        introParagraph {
+          internal {
+            content
           }
         }
       }

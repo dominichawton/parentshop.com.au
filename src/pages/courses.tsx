@@ -11,7 +11,7 @@ import {
 import { graphql } from 'gatsby';
 import React from 'react';
 import CoursePreviewCard from '../components/courses/course-preview-card';
-import { courseData } from '../components/courses/course-data';
+import { courseData } from '../data/course-data';
 
 const CoursesPage = ({ data }) => (
   <Flex

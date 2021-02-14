@@ -17,7 +17,7 @@ function Media({ data }) {
       <Flex justifyContent="space-between" alignItems="flex-start">
         <Flex flexDir="column" justifyContent="space-between" w="50%" mr={20}>
           <Flex flexDir="column" flexGrow={3}>
-            <Heading as="h1" fontWeight="semibold" mt={10}>
+            <Heading as="h1" mt={10}>
               Media
             </Heading>
             <Text mt={3}>

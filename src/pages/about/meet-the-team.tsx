@@ -45,7 +45,7 @@ function MeetTheTeam() {
       mt={8}
       mb={16}
     >
-      <Heading as="h1" fontWeight="semibold" mt={10}>
+      <Heading as="h1" mt={10}>
         Meet the team
       </Heading>
       <Heading

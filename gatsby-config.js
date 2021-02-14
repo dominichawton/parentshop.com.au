@@ -8,7 +8,7 @@ module.exports = {
     description: `Engaging, action-based professional development and training events that deliver effective behaviour-change solutions for all ages. World-class training using the latest research in behavioural sciences.`,
     author: `Dominic Hawton`,
   },
-  plugins: [
+  plugins: [  
     `@chakra-ui/gatsby-plugin`,
     `gatsby-plugin-react-helmet`,
     {
