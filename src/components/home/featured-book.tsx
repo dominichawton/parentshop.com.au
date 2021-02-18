@@ -48,7 +48,8 @@ function FeaturedBook({
             color="gray.800"
             fontWeight="semibold"
             fontSize="sm"
-            boxShadow="md"
+            border="1px solid"
+            borderColor="gray.200"
           >{`$${price}`}</Text>
         </Flex>
       </Flex>

@@ -7,7 +7,10 @@ import FeaturedBook from './featured-book';
 
 import { tempBookData } from '../../data/books';
 
-function FeaturedBooks() {
+function FeaturedBooks({
+  title = 'Featured resources',
+  description = 'Hand-picked resources packed with practical advice, carefully curated by the Parentshop team.',
+}) {
   const data = useStaticQuery(graphql`
     query {
       bookCovers: allFile(filter: { sourceInstanceName: { eq: "books" } }) {
@@ -33,10 +36,9 @@ function FeaturedBooks() {
       alignItems="center"
     >
       <Flex flexDir="column" maxW="1280px" w="100%" alignItems="center">
-        <Heading color="gray.900">Featured resources</Heading>
+        <Heading color="gray.900">{title}</Heading>
         <Text color="gray.600" mt={5} fontSize="1.2rem">
-          Hand-picked resources packed with practical advice, carefully curated
-          by the Parentshop team.
+          {description}
         </Text>
         <Link to="/shop">
           <Button colorScheme="secondary" mt={6}>

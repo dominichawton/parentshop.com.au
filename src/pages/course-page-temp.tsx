@@ -5,6 +5,8 @@ import React from 'react';
 import CoursePreviewCard from '../components/courses/course-preview-card';
 import { capitalize } from '../utils/string-functions';
 import { courseData } from '../data/course-data';
+import FeaturedBooks from '../components/home/featured-books';
+import LinkButton from '../components/buttons/link-button';
 
 const tempData = {
   courseCategory: 'School Leaders & Teachers',
@@ -128,8 +130,125 @@ function CoursePage({ data }) {
           />
         </Grid>
       </Flex>
-      <Flex flexDir="column" justify="start" align="start" mt={20} w="100%">
+      <Flex flexDir="column" justify="start" align="start" my={20} w="100%">
         <Heading as="h3">Testamonials</Heading>
+        <Grid gridTemplateColumns="repeat(3, 1fr)" gap={8} mt={6}>
+          <Flex
+            flexDir="column"
+            justify="center"
+            align="center"
+            bgColor="white"
+            borderRadius="2xl"
+            p={8}
+            border="1px solid"
+            borderColor="gray.200"
+          >
+            <Text color="gray.800" w="100%" fontSize="lg">
+              "Very practical, user-friendly, evidence-based information to
+              support parents, so they can better support their children."
+            </Text>
+            <Text
+              mt={2}
+              fontSize="md"
+              color="gray.800"
+              w="100%"
+              fontWeight="semibold"
+            >
+              Mark King
+            </Text>
+            <Text fontSize="sm" color="gray.600" w="100%">
+              Principal at St. John's College, Lismore
+            </Text>
+          </Flex>
+          <Flex
+            flexDir="column"
+            justify="center"
+            align="center"
+            bgColor="white"
+            borderRadius="2xl"
+            p={8}
+            border="1px solid"
+            borderColor="gray.200"
+          >
+            <Text color="gray.800" w="100%" fontSize="lg">
+              "Very practical, user-friendly, evidence-based information to
+              support parents, so they can better support their children."
+            </Text>
+            <Text
+              mt={2}
+              fontSize="md"
+              color="gray.800"
+              w="100%"
+              fontWeight="semibold"
+            >
+              Mark King
+            </Text>
+            <Text fontSize="sm" color="gray.600" w="100%">
+              Principal at St. John's College, Lismore
+            </Text>
+          </Flex>
+          <Flex
+            flexDir="column"
+            justify="center"
+            align="center"
+            bgColor="white"
+            borderRadius="2xl"
+            p={8}
+            border="1px solid"
+            borderColor="gray.200"
+          >
+            <Text color="gray.800" w="100%" fontSize="lg">
+              "Very practical, user-friendly, evidence-based information to
+              support parents, so they can better support their children."
+            </Text>
+            <Text
+              mt={2}
+              fontSize="md"
+              color="gray.800"
+              w="100%"
+              fontWeight="semibold"
+            >
+              Mark King
+            </Text>
+            <Text fontSize="sm" color="gray.600" w="100%">
+              Principal at St. John's College, Lismore
+            </Text>
+          </Flex>
+        </Grid>
+      </Flex>
+      <FeaturedBooks title="Recommended reading" />
+      <Flex
+        w="100%"
+        bg="white"
+        borderRadius="3xl"
+        boxShadow="md"
+        mt={20}
+        overflow="hidden"
+        h="20rem"
+        transition="all .1s ease-out"
+        cursor="pointer"
+        _hover={{ boxShadow: 'xl', transform: 'translateY(-5px)' }}
+      >
+        <Box w="50%" overflow="hidden">
+          <Img fluid={data.inHouseImage.childImageSharp.fluid} />
+        </Box>
+        <Flex
+          flexDir="column"
+          alignItems="start"
+          justifyContent="center"
+          p={12}
+          w="50%"
+        >
+          <Heading as="h3" size="lg">
+            We can also train your team in-house!
+          </Heading>
+          <Text my={4} color="gray.600">
+            Parentshop offers convenient, flexible and highly cost-effective
+            in-house training. Equip your whole school with a unified approach
+            to managing anxiety and building resilience.
+          </Text>
+          <LinkButton text="Learn more" link="courses" />
+        </Flex>
       </Flex>
     </Flex>
   );
@@ -140,6 +259,13 @@ export default CoursePage;
 export const query = graphql`
   query {
     courseImage: file(relativePath: { eq: "daredevil-children.jpg" }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+    inHouseImage: file(relativePath: { eq: "courses/inhouse-training.jpg" }) {
       childImageSharp {
         fluid {
           ...GatsbyImageSharpFluid_withWebp
