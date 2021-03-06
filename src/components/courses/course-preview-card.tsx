@@ -4,14 +4,26 @@ import Img from 'gatsby-image';
 import { Link } from 'gatsby';
 import { useStaticQuery, graphql } from 'gatsby';
 import { IoArrowForward } from '@react-icons/all-files/io5/IoArrowForward';
+import LinkButton from '../buttons/link-button';
+import { renderRichText } from 'gatsby-source-contentful/rich-text';
+import { BLOCKS, MARKS } from '@contentful/rich-text-types';
+
+const options = {
+  renderNode: {
+    [BLOCKS.PARAGRAPH]: (_node, children) => <Text>{children}</Text>,
+  },
+};
 
 function CoursePreviewCard({
   image,
   category,
   location = 'online',
   title,
-  body = '',
+  body,
+  generic = true,
+  link = 'courses',
 }) {
+  const richTextBody = renderRichText(body, options);
   return (
     <Link to={`/course-page-temp`}>
       <Flex
@@ -42,38 +54,42 @@ function CoursePreviewCard({
             fluid={image}
             imgStyle={{ objectFit: 'cover', objectPosition: 'center' }}
           />
-          <Flex
-            position="absolute"
-            px={3}
-            py={1}
-            borderRadius="2xl"
-            bgColor="white"
-            fontWeight="semibold"
-            color="primary.500"
-            top={3}
-            right={10}
-            border="1px solid"
-            borderColor="gray.200"
-          >
-            $299
-          </Flex>
-          <Flex
-            position="absolute"
-            bottom={0}
-            left={10}
-            borderTopLeftRadius="lg"
-            borderTopRightRadius="lg"
-            bgColor="primary.500"
-            p={2}
-            color="white"
-            fontWeight="semibold"
-            flexDir="column"
-            justifyContent="center"
-            alignItems="center"
-          >
-            <Text fontSize="2xl">29</Text>
-            <Text mt={-2}>JAN</Text>
-          </Flex>
+          {!generic && (
+            <>
+              <Flex
+                position="absolute"
+                px={3}
+                py={1}
+                borderRadius="2xl"
+                bgColor="white"
+                fontWeight="semibold"
+                color="primary.500"
+                top={3}
+                right={10}
+                border="1px solid"
+                borderColor="gray.200"
+              >
+                $299
+              </Flex>
+              <Flex
+                position="absolute"
+                bottom={0}
+                left={10}
+                borderTopLeftRadius="lg"
+                borderTopRightRadius="lg"
+                bgColor="primary.500"
+                p={2}
+                color="white"
+                fontWeight="semibold"
+                flexDir="column"
+                justifyContent="center"
+                alignItems="center"
+              >
+                <Text fontSize="2xl">29</Text>
+                <Text mt={-2}>JAN</Text>
+              </Flex>
+            </>
+          )}
         </Box>
         <Flex
           flexDir="column"
@@ -104,32 +120,40 @@ function CoursePreviewCard({
             >
               {title}
             </Heading>
-            <Text
-              py=".2rem"
-              px={2}
-              bgColor="primary.100"
-              textColor="primary.500"
-              fontWeight="600"
-              fontSize="sm"
-              borderRadius="xl"
-              textTransform="capitalize"
-            >
-              {location}
-            </Text>
-            {body && (
-              <Text mt={3} size="sm" color="gray.600">
-                {body}
+            {!generic && (
+              <Text
+                py=".2rem"
+                px={2}
+                bgColor="primary.100"
+                textColor="primary.500"
+                fontWeight="600"
+                fontSize="sm"
+                borderRadius="xl"
+                textTransform="capitalize"
+              >
+                {location}
               </Text>
             )}
+            {body && (
+              <Box mt={1} size="sm" color="gray.600">
+                {richTextBody}
+              </Box>
+            )}
           </Flex>
-          <Button
-            mt={4}
-            colorScheme="secondary"
-            _hover={{ textDecoration: 'none' }}
-            w="100%"
-          >
-            Book now
-          </Button>
+          {generic ? (
+            <Box alignSelf="flex-end">
+              <LinkButton text="Learn more" link={link} />
+            </Box>
+          ) : (
+            <Button
+              mt={4}
+              colorScheme="secondary"
+              _hover={{ textDecoration: 'none' }}
+              w="100%"
+            >
+              Book now
+            </Button>
+          )}
         </Flex>
       </Flex>
     </Link>

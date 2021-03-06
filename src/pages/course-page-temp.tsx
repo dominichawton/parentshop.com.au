@@ -106,6 +106,7 @@ function CoursePage({ data }) {
             body={courseData[0].body}
             category={courseData[0].category}
             location={courseData[0].location}
+            generic={false}
           />
           <CoursePreviewCard
             image={data.courseImage.childImageSharp.fluid}
@@ -113,6 +114,7 @@ function CoursePage({ data }) {
             body={courseData[0].body}
             category={courseData[0].category}
             location={courseData[0].location}
+            generic={false}
           />
           <CoursePreviewCard
             image={data.courseImage.childImageSharp.fluid}
@@ -120,6 +122,7 @@ function CoursePage({ data }) {
             body={courseData[0].body}
             category={courseData[0].category}
             location={courseData[0].location}
+            generic={false}
           />
           <CoursePreviewCard
             image={data.courseImage.childImageSharp.fluid}
@@ -127,6 +130,7 @@ function CoursePage({ data }) {
             body={courseData[0].body}
             category={courseData[0].category}
             location={courseData[0].location}
+            generic={false}
           />
         </Grid>
       </Flex>
@@ -141,7 +145,7 @@ function CoursePage({ data }) {
             borderRadius="2xl"
             p={8}
             border="1px solid"
-            borderColor="gray.200"
+            borderColor="primary.500"
           >
             <Text color="gray.800" w="100%" fontSize="lg">
               "Very practical, user-friendly, evidence-based information to
@@ -168,7 +172,7 @@ function CoursePage({ data }) {
             borderRadius="2xl"
             p={8}
             border="1px solid"
-            borderColor="gray.200"
+            borderColor="primary.500"
           >
             <Text color="gray.800" w="100%" fontSize="lg">
               "Very practical, user-friendly, evidence-based information to
@@ -195,7 +199,7 @@ function CoursePage({ data }) {
             borderRadius="2xl"
             p={8}
             border="1px solid"
-            borderColor="gray.200"
+            borderColor="primary.500"
           >
             <Text color="gray.800" w="100%" fontSize="lg">
               "Very practical, user-friendly, evidence-based information to
@@ -265,7 +269,7 @@ export const query = graphql`
         }
       }
     }
-    inHouseImage: file(relativePath: { eq: "courses/inhouse-training.jpg" }) {
+    inHouseImage: file(relativePath: { eq: "inhouse-training.jpg" }) {
       childImageSharp {
         fluid {
           ...GatsbyImageSharpFluid_withWebp

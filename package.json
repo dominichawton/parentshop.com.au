@@ -9,6 +9,8 @@
     "@chakra-ui/gatsby-plugin": "^1.0.1",
     "@chakra-ui/icons": "^1.0.3",
     "@chakra-ui/react": "^1.1.4",
+    "@contentful/rich-text-react-renderer": "^14.1.2",
+    "@contentful/rich-text-types": "^14.1.2",
     "@emotion/react": "^11.1.4",
     "@emotion/styled": "^11.0.0",
     "@react-icons/all-files": "^4.1.0",

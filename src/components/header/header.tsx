@@ -14,6 +14,7 @@ import { graphql, Link, useStaticQuery } from 'gatsby';
 import React, { useState } from 'react';
 import MobileNavItem from './mobileNavItem';
 import { FiArrowRight } from 'react-icons/fi';
+import { useCartCount } from '../../context/StoreContext';
 
 import NavItem from './desktopNavItem';
 // @ts-ignore
@@ -22,6 +23,7 @@ import CloseIcon from './../../assets/close-outline.svg';
 import MenuIcon from './../../assets/menu-outline.svg';
 
 function Header() {
+  const count = useCartCount();
   const { isOpen, onToggle } = useDisclosure();
 
   const handleOnClick = () => onToggle();
@@ -84,32 +86,25 @@ function Header() {
               </Link>
             </Box>
 
-            <UnorderedList
-              styleType="none"
-              display="flex"
-              alignItems="center"
-              justifyContent="center"
-              fontSize="md"
-            >
-              <Button
-                colorScheme="gray"
-                variant="link"
-                size="md"
-                mr={8}
-                _hover={{ textDecoration: 'none', color: 'primary.500' }}
-              >
-                <Link to="#">Sign in</Link>
-              </Button>
-              <Button
-                colorScheme="secondary"
-                size="md"
-                mb={0}
-                variant="link"
-                _hover={{ textDecoration: 'none', color: 'secondary.600' }}
-              >
-                <Link to="#">Sign up</Link>
-              </Button>
-            </UnorderedList>
+            <Box ml={8}>
+              <Link to="/cart">
+                <Button colorScheme="gray" size="sm">
+                  <Text mr={3}>Cart</Text>
+                  <Flex
+                    justifyContent="center"
+                    alignItems="center"
+                    p={1}
+                    borderRadius="3xl"
+                    bgColor="white"
+                    color="gray.900"
+                    w={5}
+                    h={5}
+                  >
+                    {count}
+                  </Flex>
+                </Button>
+              </Link>
+            </Box>
           </Flex>
         </Flex>
         <Flex
@@ -139,44 +134,51 @@ function Header() {
                 />
               </Box>
             </Link>
-            <UnorderedList
-              display={{ base: 'none', lg: 'flex' }}
-              alignItems="center"
-              justifyContent="space-between"
-              styleType="none"
-            >
-              <NavItem name="courses" />
-              <NavItem name="professionals" />
-              <NavItem name="parents" />
-              <NavItem name="shop" />
-              <NavItem
-                name="about"
-                dropdown={true}
-                dropdownItems={[
-                  {
-                    name: 'Parentshop',
-                    description: 'Learn more about Parentshop.',
-                    path: 'parentshop',
-                  },
-                  {
-                    name: 'Michael Hawton',
-                    description: 'Find out more about our founder.',
-                    path: 'michael-hawton',
-                  },
-                  {
-                    name: 'Meet the team',
-                    description: 'Get to know us.',
-                    path: 'meet-the-team',
-                  },
-                  {
-                    name: 'Media',
-                    description: 'Parentshop in the media.',
-                    path: 'media',
-                  },
-                ]}
-              />
-              <NavItem name="contact" />
-            </UnorderedList>
+            <Flex justifyContent="center" alignItems="center">
+              <UnorderedList
+                display={{ base: 'none', lg: 'flex' }}
+                alignItems="center"
+                justifyContent="space-between"
+                styleType="none"
+              >
+                <NavItem name="courses" />
+                <NavItem name="professionals" />
+                <NavItem name="parents" />
+                <NavItem name="shop" />
+                <NavItem
+                  name="about"
+                  dropdown={true}
+                  dropdownItems={[
+                    {
+                      name: 'Parentshop',
+                      description: 'Learn more about Parentshop.',
+                      path: 'parentshop',
+                    },
+                    {
+                      name: 'Michael Hawton',
+                      description: 'Find out more about our founder.',
+                      path: 'michael-hawton',
+                    },
+                    {
+                      name: 'Meet the team',
+                      description: 'Get to know us.',
+                      path: 'meet-the-team',
+                    },
+                    {
+                      name: 'Media',
+                      description: 'Parentshop in the media.',
+                      path: 'media',
+                    },
+                    {
+                      name: 'Blog',
+                      description: 'See the latest.',
+                      path: 'blog',
+                    },
+                  ]}
+                />
+                <NavItem name="contact" />
+              </UnorderedList>
+            </Flex>
           </Flex>
 
           <chakra.button

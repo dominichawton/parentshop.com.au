@@ -1,6 +1,11 @@
-import React from "react";
-import Layout from "./src/components/layout/layout";
+import React from 'react';
+import Layout from './src/components/layout/layout';
+import { StoreContextProvider } from './src/context/StoreContext';
 
 export const wrapPageElement = ({ element, props }) => {
-  return <Layout {...props}>{element}</Layout>;
+  return (
+    <StoreContextProvider>
+      <Layout {...props}>{element}</Layout>
+    </StoreContextProvider>
+  );
 };

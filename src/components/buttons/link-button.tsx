@@ -3,7 +3,7 @@ import { IoArrowForward } from '@react-icons/all-files/io5/IoArrowForward';
 import React from 'react';
 import { Link } from 'gatsby';
 
-function LinkButton({ text, marginLeft = 0, link }) {
+function LinkButton({ text, marginLeft = 0, link, marginY = 0 }) {
   return (
     <Link to={`/${link}`}>
       <Button
@@ -12,6 +12,7 @@ function LinkButton({ text, marginLeft = 0, link }) {
         variant="link"
         ml={marginLeft}
         pb={1}
+        my={marginY}
       >
         {text}
       </Button>

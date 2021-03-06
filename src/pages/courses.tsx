@@ -7,67 +7,102 @@ import {
   Tab,
   TabPanels,
   TabPanel,
+  Divider,
+  Grid,
 } from '@chakra-ui/react';
 import { graphql } from 'gatsby';
 import React from 'react';
 import CoursePreviewCard from '../components/courses/course-preview-card';
 import { courseData } from '../data/course-data';
 
-const CoursesPage = ({ data }) => (
-  <Flex
-    flexDir="column"
-    justifyContent="flex-start"
-    alignItems="flex-start"
-    w="100%"
-    mt={16}
-  >
-    <Heading>Courses</Heading>
-    <Text mt={3} color="gray.600" w="60%">
-      Parentshop runs workshops for parents and professionals across Australia
-      and online. Use the filters below to display courses relevant to you.
-    </Text>
-    <Tabs variant="soft-rounded" colorScheme="secondary" w="100%">
-      <TabList>
-        <TabList my={10} display="flex" justifyContent="space-between">
-          <Tab mr={4}>All courses</Tab>
-          <Tab mx={4}>School leaders & teachers</Tab>
-          <Tab mx={4}>Early years educators</Tab>
-          <Tab mx={4}>Child & family specialists</Tab>
-          <Tab mx={4}>Parents</Tab>
-        </TabList>
-      </TabList>
-      <TabPanels w="100%">
-        <TabPanel display="flex" flexDir="column" w="100%" p={0}>
-          <Flex justifyContent="space-between">
-            {data.coursePreviewImages.edges.map((edge, index) => (
-              <CoursePreviewCard
-                image={edge.node.childImageSharp.fluid}
-                title={courseData[index].title}
-                body={courseData[index].body}
-                location={courseData[index].location}
-                category={courseData[index].category}
-              />
-            ))}
-          </Flex>
-          <Flex justifyContent="space-between">
-            {data.coursePreviewImages.edges.map((edge, index) => (
-              <CoursePreviewCard
-                image={edge.node.childImageSharp.fluid}
-                title={courseData[index].title}
-                body={courseData[index].body}
-                location={courseData[index].location}
-                category={courseData[index].category}
-              />
-            ))}
-          </Flex>
-        </TabPanel>
-        <TabPanel>
-          <p>two!</p>
-        </TabPanel>
-      </TabPanels>
-    </Tabs>
-  </Flex>
-);
+const CoursesPage = ({ data }) => {
+  const schoolCourses = data.courses.edges.filter(
+    (course) =>
+      course.node.courseCategory.toLowerCase() === 'school leaders & teachers'
+  );
+  const earlyYearsCourses = data.courses.edges.filter(
+    (course) =>
+      course.node.courseCategory.toLowerCase() === 'early years educators'
+  );
+  const parentCourses = data.courses.edges.filter(
+    (course) => course.node.courseCategory.toLowerCase() === 'parents'
+  );
+  const childSpecialistCourses = data.courses.edges.filter(
+    (course) =>
+      course.node.courseCategory.toLowerCase() === 'child & family specialists'
+  );
+  return (
+    <Flex
+      flexDir="column"
+      justifyContent="flex-start"
+      alignItems="flex-start"
+      w="100%"
+      mt={16}
+    >
+      <Heading>Courses</Heading>
+      <Text mt={3} color="gray.600" w="60%">
+        Parentshop runs workshops for parents and professionals across Australia
+        and online.
+      </Text>
+      <Heading as="h2" mt={12} mb={3} size="lg">
+        For school leaders & teachers
+      </Heading>
+      <Divider mb={6} />
+      <Grid templateColumns="repeat(4, 1fr)" gap={8} w="100%">
+        {schoolCourses.map((course, index) => (
+          <CoursePreviewCard
+            image={course.node.courseImage.fluid}
+            title={course.node.courseName}
+            body={course.node.shortDescription}
+            category={course.node.courseCategory}
+          />
+        ))}
+      </Grid>
+      <Heading as="h2" mt={8} mb={3} size="lg">
+        For early years educators
+      </Heading>
+      <Divider mb={6} />
+      <Grid templateColumns="repeat(4, 1fr)" gap={8} w="100%">
+        {earlyYearsCourses.map((course, index) => (
+          <CoursePreviewCard
+            image={course.node.courseImage.fluid}
+            title={course.node.courseName}
+            body={course.node.shortDescription}
+            category={course.node.courseCategory}
+          />
+        ))}
+      </Grid>
+      <Heading as="h2" mt={8} mb={3} size="lg">
+        For child and family specialists
+      </Heading>
+      <Divider mb={6} />
+      <Grid templateColumns="repeat(4, 1fr)" gap={8} w="100%">
+        {childSpecialistCourses.map((course, index) => (
+          <CoursePreviewCard
+            image={course.node.courseImage.fluid}
+            title={course.node.courseName}
+            body={course.node.shortDescription}
+            category={course.node.courseCategory}
+          />
+        ))}
+      </Grid>
+      <Heading as="h2" mt={8} mb={3} size="lg">
+        For parents
+      </Heading>
+      <Divider mb={6} />
+      <Grid templateColumns="repeat(4, 1fr)" gap={8} w="100%" w="100%">
+        {parentCourses.map((course, index) => (
+          <CoursePreviewCard
+            image={course.node.courseImage.fluid}
+            title={course.node.courseName}
+            body={course.node.shortDescription}
+            category={course.node.courseCategory}
+          />
+        ))}
+      </Grid>
+    </Flex>
+  );
+};
 
 export default CoursesPage;
 
@@ -83,6 +118,22 @@ export const query = graphql`
             fluid {
               ...GatsbyImageSharpFluid_withWebp
             }
+          }
+        }
+      }
+    }
+    courses: allContentfulCourse {
+      edges {
+        node {
+          courseCategory
+          courseImage {
+            fluid {
+              ...GatsbyContentfulFluid
+            }
+          }
+          courseName
+          shortDescription {
+            raw
           }
         }
       }

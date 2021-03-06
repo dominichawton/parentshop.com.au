@@ -52,6 +52,7 @@ function FeaturedBooks({
               title={tempBookData[index].title}
               author={tempBookData[index].author}
               price={tempBookData[index].price}
+              key={index}
             />
           ))}
         </Flex>

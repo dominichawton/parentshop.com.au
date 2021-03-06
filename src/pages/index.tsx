@@ -83,7 +83,7 @@ const IndexPage = ({ data }) => {
           />
         </ImageContainer>
       </Container>
-      <UpcomingCourses images={data.coursePreviewImages.edges} />
+      <UpcomingCourses courses={data.courses.edges} />
       <FeaturedBooks />
       <OurPartners />
     </>
@@ -122,6 +122,22 @@ export const query = graphql`
         introParagraph {
           internal {
             content
+          }
+        }
+      }
+    }
+    courses: allContentfulCourse {
+      edges {
+        node {
+          courseCategory
+          courseImage {
+            fluid {
+              ...GatsbyContentfulFluid
+            }
+          }
+          courseName
+          shortDescription {
+            raw
           }
         }
       }
