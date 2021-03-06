@@ -8,6 +8,7 @@ import {
   TabPanels,
   TabPanel,
   Grid,
+  Divider,
 } from '@chakra-ui/react';
 import { graphql } from 'gatsby';
 import React from 'react';
@@ -40,9 +41,10 @@ const ShopPage = ({ data }) => {
         course material. You can also purchase online courses and additional
         workbooks through the store.
       </Text>
+      <Divider my={8} />
       <Tabs variant="soft-rounded" colorScheme="secondary" w="100%">
         <TabList>
-          <TabList my={10} display="flex" justifyContent="space-between">
+          <TabList mb={10} display="flex" justifyContent="space-between">
             <Tab mr={4}>All resources</Tab>
             <Tab mx={4}>Books</Tab>
             <Tab mx={4}>Workbooks</Tab>

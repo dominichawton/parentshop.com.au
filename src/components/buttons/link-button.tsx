@@ -1,22 +1,54 @@
 import { Button } from '@chakra-ui/react';
+import styled from '@emotion/styled';
 import { IoArrowForward } from '@react-icons/all-files/io5/IoArrowForward';
 import React from 'react';
 import { Link } from 'gatsby';
 
-function LinkButton({ text, marginLeft = 0, link, marginY = 0 }) {
-  return (
-    <Link to={`/${link}`}>
-      <Button
-        rightIcon={<IoArrowForward />}
-        colorScheme="secondary"
-        variant="link"
-        ml={marginLeft}
-        pb={1}
-        my={marginY}
-      >
-        {text}
-      </Button>
-    </Link>
+const StyledLink = styled(Link)`
+  position: relative;
+  &:hover {
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+  ::after {
+    content: '';
+    transform-origin: left;
+    position: absolute;
+    bottom: 2.4rem;
+    left: 0;
+    height: 1px;
+    width: 100%;
+    background-color: #ff6584;
+    transform: scaleX(0);
+    transition: 0.2s ease-out all;
+  }
+`;
+
+function LinkButton({
+  text,
+  marginLeft = 0,
+  link,
+  marginY = 0,
+  noUnderline = false,
+}) {
+  const body = (
+    <Button
+      rightIcon={<IoArrowForward />}
+      colorScheme="secondary"
+      variant="link"
+      ml={marginLeft}
+      pb={1}
+      my={marginY}
+      _hover={{ textDecoration: 'none' }}
+    >
+      {text}
+    </Button>
+  );
+  return noUnderline ? (
+    <Link to={`/${link}`}>{body}</Link>
+  ) : (
+    <StyledLink to={`/${link}`}>{body}</StyledLink>
   );
 }
 

@@ -50,7 +50,7 @@ function UpcomingCourses({
       </Flex>
       <Tabs variant="soft-rounded" colorScheme="secondary" w="100%">
         <Flex w="100%" justifyContent="space-between" alignItems="center">
-          <TabList my={10} display="flex">
+          <TabList my={10} display="flex" w="100%">
             {!parentsOnly && (
               <>
                 <Tab mr={4}>All courses</Tab>
@@ -66,7 +66,7 @@ function UpcomingCourses({
         <TabPanels w="100%">
           {/* All courses */}
           <TabPanel w="100%" maxW="1280px" p={0}>
-            <Grid templateColumns="repeat(4, 1fr)" gap={8}>
+            <Grid templateColumns="repeat(4, 1fr)" gap={4}>
               {courses.map((course, index) => (
                 <GridItem>
                   <CoursePreviewCard
@@ -88,7 +88,7 @@ function UpcomingCourses({
             justifyContent="space-between"
             p={0}
           >
-            <Grid templateColumns="repeat(4, 1fr)" gap={8}>
+            <Grid templateColumns="repeat(4, 1fr)" gap={4}>
               {schoolCourses.map((course, index) => (
                 <GridItem>
                   <CoursePreviewCard
@@ -110,7 +110,7 @@ function UpcomingCourses({
             justifyContent="space-between"
             p={0}
           >
-            <Grid templateColumns="repeat(4, 1fr)" gap={8}>
+            <Grid templateColumns="repeat(4, 1fr)" gap={4}>
               {earlyYearsCourses.map((course, index) => (
                 <GridItem>
                   <CoursePreviewCard
@@ -132,7 +132,7 @@ function UpcomingCourses({
             justifyContent="space-between"
             p={0}
           >
-            <Grid templateColumns="repeat(4, 1fr)" gap={8}>
+            <Grid templateColumns="repeat(4, 1fr)" gap={4}>
               {childSpecialistCourses.map((course, index) => (
                 <GridItem>
                   <CoursePreviewCard
@@ -154,7 +154,7 @@ function UpcomingCourses({
             justifyContent="space-between"
             p={0}
           >
-            <Grid templateColumns="repeat(4, 1fr)" gap={8}>
+            <Grid templateColumns="repeat(4, 1fr)" gap={4}>
               {parentCourses.map((course, index) => (
                 <GridItem>
                   <CoursePreviewCard

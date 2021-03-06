@@ -102,10 +102,11 @@ function CoursePreviewCard({
           <Flex flexDir="column" align="start" flexGrow={1}>
             <Text
               fontSize="xs"
-              color="gray.400"
+              color="primary.500"
               textTransform="uppercase"
               fontWeight="semibold"
               letterSpacing=".1rem"
+              mb={1}
             >
               {category}
             </Text>
@@ -142,7 +143,7 @@ function CoursePreviewCard({
           </Flex>
           {generic ? (
             <Box alignSelf="flex-end">
-              <LinkButton text="Learn more" link={link} />
+              <LinkButton text="Learn more" link={link} noUnderline />
             </Box>
           ) : (
             <Button
