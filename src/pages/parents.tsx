@@ -15,7 +15,7 @@ const ParentsPage = ({ data }) => {
       justifyContent="flex-start"
       alignItems="flex-start"
       w="100%"
-      mt={8}
+      mt={6}
       mb={16}
     >
       <Flex justifyContent="space-between" alignItems="flex-start" w="100%">

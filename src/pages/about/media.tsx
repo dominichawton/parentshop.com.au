@@ -11,24 +11,16 @@ function Media({ data }) {
       justifyContent="flex-start"
       alignItems="flex-start"
       w="100%"
-      mt={8}
+      mt={6}
       mb={16}
     >
       <Flex justifyContent="space-between" alignItems="flex-start">
         <Flex flexDir="column" justifyContent="space-between" w="50%" mr={20}>
           <Flex flexDir="column" flexGrow={3}>
             <Heading as="h1" mt={10}>
-              Media
+              {data.header.heading}
             </Heading>
-            <Text mt={3}>
-              Michael Hawton (MAPS) is a former teacher and one of Australia’s
-              leading child-behaviour experts, often called upon by media for
-              commentary relating to education, parenting issues and
-              child-behaviour management. He is author of Engaging Adolescents
-              and Talk Less Listen More, which have sold approximately 85,000
-              copies. Michael is regularly called upon to present as a guest
-              speaker at industry-related conferences.
-            </Text>
+            <Text mt={3}>{data.header.introParagraph.internal.content}</Text>
           </Flex>
           <Flex
             mt={40}
@@ -49,7 +41,7 @@ function Media({ data }) {
         </Flex>
 
         <Box w="50%" overflow="hidden" boxShadow="lg" borderRadius="lg" mt={10}>
-          <Img fluid={data.michael.childImageSharp.fluid} />
+          <Img fluid={data.header.headerImage.fluid} />
         </Box>
       </Flex>
       <Flex
@@ -135,9 +127,7 @@ export default Media;
 
 export const query = graphql`
   query {
-    pageHeader: contentfulEntry(
-      contentful_id: { eq: "io7xBzm11ypqW5q37LXoX" }
-    ) {
+    header: contentfulEntry(contentful_id: { eq: "io7xBzm11ypqW5q37LXoX" }) {
       ... on ContentfulPageHeader {
         id
         heading
@@ -146,12 +136,10 @@ export const query = graphql`
             content
           }
         }
-      }
-    }
-    michael: file(relativePath: { eq: "media/michael.jpg" }) {
-      childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid_withWebp
+        headerImage {
+          fluid {
+            ...GatsbyContentfulFluid
+          }
         }
       }
     }

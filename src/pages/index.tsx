@@ -77,7 +77,7 @@ const IndexPage = ({ data }) => {
         <BackgroundColour />
         <ImageContainer>
           <Img
-            fluid={data.hero.childImageSharp.fluid}
+            fluid={data.header.headerImage.fluid}
             style={{ height: '100%' }}
             // imgStyle={{ objectFit: "contain" }}
           />
@@ -94,13 +94,6 @@ export default IndexPage;
 
 export const query = graphql`
   query {
-    hero: file(relativePath: { eq: "home-hero-michael.jpg" }) {
-      childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
     coursePreviewImages: allFile(
       filter: { sourceInstanceName: { eq: "courses" } }
       limit: 4
@@ -122,6 +115,11 @@ export const query = graphql`
         introParagraph {
           internal {
             content
+          }
+        }
+        headerImage {
+          fluid {
+            ...GatsbyContentfulFluid
           }
         }
       }

@@ -3,6 +3,7 @@ import { Box, Button, Flex, Heading, Text } from '@chakra-ui/react';
 import Img from 'gatsby-image';
 import { graphql, useStaticQuery } from 'gatsby';
 import { IoArrowForward } from '@react-icons/all-files/io5/IoArrowForward';
+import LinkButton from '../../components/buttons/link-button';
 
 const AboutPage = ({ data }) => {
   return (
@@ -11,7 +12,7 @@ const AboutPage = ({ data }) => {
       justifyContent="flex-start"
       alignItems="flex-start"
       w="100%"
-      mt={8}
+      mt={6}
       mb={16}
     >
       <Flex justifyContent="space-between" alignItems="flex-start" w="100%">
@@ -84,7 +85,7 @@ const AboutPage = ({ data }) => {
           overflow="hidden"
           boxShadow="lg"
         >
-          <Img fluid={data.heroImage.childImageSharp.fluid} />
+          <Img fluid={data.header.headerImage.fluid} />
         </Box>
       </Flex>
       <Flex
@@ -111,21 +112,13 @@ const AboutPage = ({ data }) => {
             <Heading fontSize="1.4rem" mt={10}>
               For Professionals
             </Heading>
-            <Text color="gray.600" mt={4}>
+            <Text color="gray.600" mt={4} mb={3}>
               Parentshop offers a range of professional-development courses for
               school leaders, teachers, child and family specialists, and
               early-years educators. We run courses throughout the year across
               Australia.
             </Text>
-            <Button
-              rightIcon={<IoArrowForward />}
-              colorScheme="secondary"
-              variant="link"
-              mt={4}
-              justifySelf="flex-end"
-            >
-              View courses for professionals
-            </Button>
+            <LinkButton text="View courses for professionals" link="courses" />
           </Flex>
           <Flex
             flexDir="column"
@@ -139,20 +132,12 @@ const AboutPage = ({ data }) => {
             <Heading fontSize="1.4rem" mt={10}>
               For Parents
             </Heading>
-            <Text color="gray.600" mt={4}>
+            <Text color="gray.600" mt={4} mb={3}>
               We offer in-person and online courses for parents to help them
               better understand their children and adolescents, helping parents
               to guide their children in the right direction.
             </Text>
-            <Button
-              rightIcon={<IoArrowForward />}
-              colorScheme="secondary"
-              variant="link"
-              mt={4}
-              justifySelf="flex-end"
-            >
-              View courses for parents
-            </Button>
+            <LinkButton text="View courses for parents" link="courses" />
           </Flex>
         </Flex>
       </Flex>
@@ -173,12 +158,10 @@ export const query = graphql`
             content
           }
         }
-      }
-    }
-    heroImage: file(relativePath: { eq: "about/about-parentshop.jpg" }) {
-      childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid_withWebp
+        headerImage {
+          fluid {
+            ...GatsbyContentfulFluid
+          }
         }
       }
     }

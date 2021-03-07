@@ -1,4 +1,4 @@
-import { Button } from '@chakra-ui/react';
+import { Box, Button } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 import { IoArrowForward } from '@react-icons/all-files/io5/IoArrowForward';
 import React from 'react';
@@ -15,9 +15,9 @@ const StyledLink = styled(Link)`
     content: '';
     transform-origin: left;
     position: absolute;
-    bottom: 2.4rem;
+    bottom: -3px;
     left: 0;
-    height: 1px;
+    height: 2px;
     width: 100%;
     background-color: #ff6584;
     transform: scaleX(0);
@@ -31,10 +31,11 @@ function LinkButton({
   link,
   marginY = 0,
   noUnderline = false,
+  withIcon = true,
 }) {
   const body = (
     <Button
-      rightIcon={<IoArrowForward />}
+      rightIcon={withIcon ? <IoArrowForward /> : null}
       colorScheme="secondary"
       variant="link"
       ml={marginLeft}
@@ -46,9 +47,13 @@ function LinkButton({
     </Button>
   );
   return noUnderline ? (
-    <Link to={`/${link}`}>{body}</Link>
+    <Box position="relative" display="inline">
+      <Link to={`/${link}`}>{body}</Link>
+    </Box>
   ) : (
-    <StyledLink to={`/${link}`}>{body}</StyledLink>
+    <Box position="relative" display="inline">
+      <StyledLink to={`/${link}`}>{body}</StyledLink>
+    </Box>
   );
 }
 

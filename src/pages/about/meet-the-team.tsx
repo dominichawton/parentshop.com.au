@@ -42,7 +42,7 @@ function MeetTheTeam() {
       justifyContent="flex-start"
       alignItems="flex-start"
       w="100%"
-      mt={8}
+      mt={6}
       mb={16}
     >
       <Heading as="h1" mt={10}>
