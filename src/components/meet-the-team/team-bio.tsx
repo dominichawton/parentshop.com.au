@@ -2,11 +2,11 @@ import { Box, Flex, Heading, Text } from '@chakra-ui/react';
 import React from 'react';
 import Img from 'gatsby-image';
 
-function TeamBio({ imageSrc, name, title, bio }) {
+function TeamBio({ imageSrc, name, role, bio }) {
   return (
     <Flex
       flexDir="column"
-      p={7}
+      p={8}
       bgColor="white"
       borderRadius="2xl"
       boxShadow="md"
@@ -17,10 +17,12 @@ function TeamBio({ imageSrc, name, title, bio }) {
       <Heading fontSize="1.5rem" mt={8} fontWeight="semibold">
         {name}
       </Heading>
-      <Text color="gray.500" mt={1}>
-        {title}
+      <Text color="gray.500" my={2} fontSize={18}>
+        {role}
       </Text>
-      <Text mt={2}>{bio}</Text>
+      <Text mt={2} color="gray.700">
+        {bio}
+      </Text>
     </Flex>
   );
 }

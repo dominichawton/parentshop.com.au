@@ -4,38 +4,11 @@ import React, { useEffect } from 'react';
 import { teamData } from '../../components/meet-the-team/team';
 import TeamBio from '../../components/meet-the-team/team-bio';
 
-function MeetTheTeam() {
-  const data = useStaticQuery(graphql`
-    query {
-      staff: allFile(filter: { sourceInstanceName: { eq: "staff" } }) {
-        edges {
-          node {
-            childImageSharp {
-              fluid {
-                ...GatsbyImageSharpFluid_withWebp
-                originalName
-              }
-            }
-          }
-        }
-      }
-      presenters: allFile(
-        filter: { sourceInstanceName: { eq: "presenters" } }
-      ) {
-        edges {
-          node {
-            childImageSharp {
-              fluid {
-                ...GatsbyImageSharpFluid_withWebp
-                originalName
-              }
-            }
-          }
-        }
-      }
-    }
-  `);
-
+function MeetTheTeam({ data }) {
+  const staff = data.teamMembers.nodes.filter((node) => node.type === 'staff');
+  const consultants = data.teamMembers.nodes.filter(
+    (node) => node.type === 'consultant'
+  );
   return (
     <Flex
       flexDir="column"
@@ -59,14 +32,14 @@ function MeetTheTeam() {
       </Heading>
       <Divider mt={5} />
       <Grid templateColumns="repeat(3, 1fr)" gap={16} w="100%" mt={12}>
-        {data.staff.edges.map((edge, i) => {
+        {staff.map((staff) => {
           return (
             <TeamBio
-              key={i}
-              name={teamData.staff[i].name}
-              title={teamData.staff[i].title}
-              bio={teamData.staff[i].bio}
-              imageSrc={edge.node.childImageSharp.fluid}
+              key={staff.name}
+              name={staff.name}
+              role={staff.role}
+              bio={staff.bio.bio}
+              imageSrc={staff.image.fluid}
             />
           );
         })}
@@ -81,15 +54,15 @@ function MeetTheTeam() {
         Presenters & consultants
       </Heading>
       <Divider mt={5} />
-      <Grid templateColumns="repeat(3, 1fr)" gap={32} w="100%" mt={12}>
-        {data.presenters.edges.map((edge, i) => {
+      <Grid templateColumns="repeat(3, 1fr)" gap={16} w="100%" mt={12}>
+        {consultants.map((consultant) => {
           return (
             <TeamBio
-              key={i}
-              name={teamData.presenters[i].name}
-              title={teamData.presenters[i].title}
-              bio={teamData.presenters[i].bio}
-              imageSrc={edge.node.childImageSharp.fluid}
+              key={consultant.name}
+              name={consultant.name}
+              role={consultant.role}
+              bio={consultant.bio.bio}
+              imageSrc={consultant.image.fluid}
             />
           );
         })}
@@ -99,3 +72,23 @@ function MeetTheTeam() {
 }
 
 export default MeetTheTeam;
+
+export const query = graphql`
+  query {
+    teamMembers: allContentfulTeamMember {
+      nodes {
+        image {
+          fluid {
+            ...GatsbyContentfulFluid
+          }
+        }
+        name
+        role
+        type
+        bio {
+          bio
+        }
+      }
+    }
+  }
+`;
