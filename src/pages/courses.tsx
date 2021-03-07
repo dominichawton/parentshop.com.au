@@ -90,7 +90,7 @@ const CoursesPage = ({ data }) => {
         For parents
       </Heading>
       <Divider mb={6} />
-      <Grid templateColumns="repeat(4, 1fr)" gap={8} w="100%" w="100%">
+      <Grid templateColumns="repeat(4, 1fr)" gap={8} w="100%">
         {parentCourses.map((course, index) => (
           <CoursePreviewCard
             image={course.node.courseImage.fluid}

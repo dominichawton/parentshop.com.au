@@ -100,7 +100,7 @@ function CoursePage({ data }) {
           Upcoming courses
         </Heading>
         <Grid gridTemplateColumns="repeat(4, 1fr)" gap={6} mt={8}>
-          <CoursePreviewCard
+          {/* <CoursePreviewCard
             image={data.courseImage.childImageSharp.fluid}
             title={courseData[0].title}
             body={courseData[0].body}
@@ -131,7 +131,7 @@ function CoursePage({ data }) {
             category={courseData[0].category}
             location={courseData[0].location}
             generic={false}
-          />
+          /> */}
         </Grid>
       </Flex>
       <Flex flexDir="column" justify="start" align="start" my={20} w="100%">
